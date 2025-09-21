@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+    <div class="card">
+  <h2>🌦 Weather App</h2>
+
+  <!-- City input -->
+  <form id ="weatherform">
+    <label for="cityInput">Enter City:</label>
+    <input type="text" id="cityinput" name="city" placeholder="Enter city name">
+    <button type="submit">Get Weather</button>
+  </form>
+
+  <!-- Weather result container -->
+  <div id="weatherresult">
+    <h3>City, Country</h3>
+    <!-- <p>🌡 Temperature: ... °C</p>
+    <p>☁ Condition: ...</p>
+    <p>💧 Humidity: ...%</p>
+    <p>🌬 Wind Speed: ... m/s</p> -->
+  </div>
+  </div>
+<script>
+    const apikey="32f2fb55d121a84b04ad4972b161132d"
+    const apiurl="https://api.openweathermap.org/data/2.5/weather?units=metric&q="
+ 
+    const searched=document.getElementById("cityinput")
+
+    const form =document.getElementById("weatherform")
+    const result =document.getElementById("weatherresult")
+
+    async function getweather(city){
+        const response=await fetch(apiurl + city + `&appid=${apikey}`)
+        if(!response.ok){
+            result.innerHTML ="City not found";
+            return ;
+        }
+        const data =await response.json()
+        console.log(data)
+         result.innerHTML = `
+        <h3>${data.name}, ${data.sys.country}</h3>
+        <p>🌡 Temperature: ${data.main.temp} °C</p>
+        <p>☁ Condition: ${data.weather[0].description}</p>
+        <p>💧 Humidity: ${data.main.humidity}%</p>
+        <p>🌬 Wind Speed: ${data.wind.speed} m/s</p>
+      `;
+      result.classList.add("show");
+    }
+
+    form.addEventListener('submit',function(e){
+            e.preventDefault();
+             getweather(searched.value);        
+    })
+</script>
+</body>
+</html>

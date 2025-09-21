@@ -1,0 +1,137 @@
+/* ---------- Black + Green Dark Theme ---------- */
+:root {
+    --bg: #0d0d0d;
+    --card-bg: #121212;
+    --accent: #00ff7f;   /* neon green */
+    --text: #e6ffe6;
+    --muted: rgba(230, 255, 230, 0.5);
+    --shadow: rgba(0, 255, 127, 0.3);
+}
+
+/* ---------- Reset & body ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ---------- Card ---------- */
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    width: min(500px, 90vw);
+    box-shadow: 0 0 20px rgba(0,255,127,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---------- Header ---------- */
+.card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+
+/* ---------- Form ---------- */
+form {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+input[type="text"]{
+    flex: 1 1 180px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: var(--text);
+    outline: none;
+    transition: 0.3s all;
+}
+input[type="text"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px var(--shadow);
+}
+
+/* ---------- Button ---------- */
+button[type="submit"] {
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #00ff7f, #00cc66);
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 0%;
+    top: 0;
+    left: -10%;
+    background: rgba(255,255,255,0.15);
+    transform: skewY(-20deg);
+    transition: all 0.5s ease;
+}
+button[type="submit"]:hover::after {
+    height: 300%;
+}
+button[type="submit"]:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 0 20px var(--shadow);
+}
+
+/* ---------- Weather Result ---------- */
+#weatherresult {
+    margin-top: 25px;
+    background: #1a1a1a;
+    border-radius: 14px;
+    padding: 20px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.5s ease;
+}
+
+/* Show animation */
+#weatherresult.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 25px var(--shadow);
+}
+
+/* ---------- Weather Info ---------- */
+#weatherresult h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--accent);
+}
+#weatherresult p {
+    color: var(--muted);
+    margin: 4px 0;
+    font-size: 1rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+    .card { padding: 20px; }
+    input[type="text"] { flex: 1 1 100%; }
+    button[type="submit"] { width: 100%; }
+}
