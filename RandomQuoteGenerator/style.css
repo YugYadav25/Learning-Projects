@@ -1,0 +1,63 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    display: flex;
+    background-color: aquamarine;
+    justify-content: center;
+ align-items: center;
+}
+#quote,#author{
+       font-family: 'Dancing Script', cursive;
+        font-size: 28px;
+    text-align: center;
+   
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 90px;   
+    width: 975px;
+    height: 400px;
+    background-color: #414141;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 5px;
+    
+}
+h1{
+    margin-top: 50px;
+    
+}
+button{
+   background-color:  blue;
+   color: white;
+   border: none;
+   size: 10%;
+   border-radius: 5px;
+   cursor: pointer;
+   padding: 10px;
+
+}
+
+button:hover{
+    transform: scale(1.05);
+    background-color: darkblue;
+}
+
+.row{
+    margin: 10px;
+    padding: 10px;
+justify-content: space-between;
+/* display: flex; */
+/* flex-direction: column; */
+}
